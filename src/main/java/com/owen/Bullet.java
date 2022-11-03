@@ -7,9 +7,9 @@ import java.awt.*;
  * @since 2022/11/3 23:13
  */
 public class Bullet {
-    private static final int WIDTH = 5;
-    private static final int HEIGHT = 5;
-    private static final int SPEED = 5;
+    private static final int WIDTH = 10;
+    private static final int HEIGHT = 10;
+    private static final int SPEED = 10;
     private int x, y;
     private Direction direction;
 
