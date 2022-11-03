@@ -7,7 +7,7 @@ import java.awt.*;
  * @since 2022/11/3 22:22
  */
 public class Tank {
-    private static final int SPEED = 10;
+    private static final int SPEED = 5;
     private int x = 0;
     private int y = 0;
     private Direction direction;
@@ -52,8 +52,12 @@ public class Tank {
         this.moving = moving;
     }
 
-    public void paint(Graphics graphics){
+    public void paint(Graphics graphics) {
         graphics.fillRect(x, y, 50, 50);
+        move();
+    }
+
+    private void move() {
         if (moving) {
             switch (direction) {
                 case UP:

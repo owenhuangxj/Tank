@@ -7,7 +7,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 /**
- * 处理坦克的禁止
+ * 处理坦克的静止
  *
  * @author OwenHuang
  * @since 2022/11/3 22:25
@@ -104,7 +104,6 @@ public class TankFrame7 extends Frame {
         }
 
     }
-
 
     public static void main(String[] args) throws InterruptedException {
         Frame frame = new TankFrame7();
