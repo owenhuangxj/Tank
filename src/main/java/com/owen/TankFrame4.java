@@ -7,13 +7,12 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 /**
- * 每次单击键盘会向右移动100个像素
+ * 根据方向键进行移动
  *
  * @author OwenHuang
- * @since 2022/11/2 21:20
+ * @since 2022/11/3 21:30
  */
 public class TankFrame4 extends Frame {
-
     private int x = 0;
     private int y = 0;
 
@@ -34,13 +33,28 @@ public class TankFrame4 extends Frame {
     @Override
     public void paint(Graphics graphics) {
         graphics.fillRect(x, y, 50, 50);
-        x += 100;
     }
 
     class TankKeyListener extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent event) {
-            x += 200;
+            int keyCode = event.getKeyCode();
+            switch (keyCode) {
+                case KeyEvent.VK_LEFT:
+                    x -= 10;
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    x += 10;
+                    break;
+                case KeyEvent.VK_UP:
+                    y -= 10;
+                    break;
+                case KeyEvent.VK_DOWN:
+                    y += 10;
+                    break;
+                default:
+                    break;
+            }
         }
 
         @Override
@@ -51,8 +65,8 @@ public class TankFrame4 extends Frame {
 
     public static void main(String[] args) throws InterruptedException {
         Frame frame = new TankFrame4();
-        while (true){
-            Thread.sleep(500);
+        while (true) {
+            Thread.sleep(50);
             frame.repaint();
         }
     }
