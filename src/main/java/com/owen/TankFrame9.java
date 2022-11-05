@@ -17,7 +17,7 @@ import java.awt.event.WindowEvent;
 public class TankFrame9 extends Frame {
     private static final int GAME_WIDTH = 800;
     private static final int GAME_HEIGHT = 800;
-    private Tank tank1 = new Tank(200, 200, Direction.DOWN);
+    private TankBeforeFire tank = new TankBeforeFire(200, 200, Direction.DOWN);
     private Bullet bullet = new Bullet(200, 200, Direction.DOWN);
 
     private Image screenImage;
@@ -38,7 +38,7 @@ public class TankFrame9 extends Frame {
 
     @Override
     public void paint(Graphics graphics) {
-        tank1.paint(graphics);
+        tank.paint(graphics);
         bullet.paint(graphics);
     }
 
@@ -107,21 +107,21 @@ public class TankFrame9 extends Frame {
         }
 
         private void setTankDirection() {
-            tank1.setMoving(true);
+            tank.setMoving(true);
             if (isLeftPressed) {
-                tank1.setDirection(Direction.LEFT);
+                tank.setDirection(Direction.LEFT);
             }
             if (isRightPressed) {
-                tank1.setDirection(Direction.RIGHT);
+                tank.setDirection(Direction.RIGHT);
             }
             if (isUpPressed) {
-                tank1.setDirection(Direction.UP);
+                tank.setDirection(Direction.UP);
             }
             if (isDownPressed) {
-                tank1.setDirection(Direction.DOWN);
+                tank.setDirection(Direction.DOWN);
             }
             if (!isDownPressed && !isUpPressed && !isLeftPressed && !isRightPressed) {
-                tank1.setMoving(false);
+                tank.setMoving(false);
             }
         }
     }

@@ -6,7 +6,7 @@ import java.awt.*;
  * @author OwenHuang
  * @since 2022/11/3 22:22
  */
-public class Tank {
+public class TankBeforeFire {
     private static final int SPEED = 5;
     private int x = 0;
     private int y = 0;
@@ -14,7 +14,7 @@ public class Tank {
 
     private boolean moving = false;
 
-    public Tank(int x, int y, Direction direction) {
+    public TankBeforeFire(int x, int y, Direction direction) {
         this.x = x;
         this.y = y;
         this.direction = direction;

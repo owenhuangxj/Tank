@@ -20,7 +20,6 @@ public class Bullet {
     }
 
     private void move() {
-        System.out.println("Tank direction:" + direction + "x:" + x + ",y:" + y);
         switch (direction) {
             case UP:
                 y -= SPEED;
