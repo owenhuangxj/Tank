@@ -9,22 +9,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 发射多颗子弹(解决内存泄露问题)
- * 但是因为ArrayList的删除元素的坑会报错ConcurrentModificationException
+ * 发射多颗子弹(解决ConcurrentModificationException异常)
  *
  * @author OwenHuang
  * @since 2022/11/5 19:00
  */
-public class TankFrame12 extends Frame {
+public class TankFrame13 extends Frame {
     static final int GAME_WIDTH = 800;
     static final int GAME_HEIGHT = 800;
 
     private Image screenImage;
-    private TankWithMultiBullets2 tank = new TankWithMultiBullets2(200, 200, Direction.DOWN, this);
+    private TankWithMultiBullets3 tank = new TankWithMultiBullets3(200, 200, Direction.DOWN, this);
 
-    List<BulletWithLifeStatus> bullets = new ArrayList<>();
+    List<BulletWithLifeStatus2> bullets = new ArrayList<>();
 
-    public TankFrame12() {
+    public TankFrame13() {
         this.setSize(GAME_WIDTH, GAME_HEIGHT);
         this.setResizable(false);
         this.setTitle("Tank War");
@@ -48,11 +47,12 @@ public class TankFrame12 extends Frame {
         graphics.drawString("子弹的数量:" + bullets.size(), 10, 50);
         tank.paint(graphics);
         /**
-         * 这种方式的遍历会造成bullets集合在删除元素的时候造成ConcurrentModificationException异常
+         * 这种方式的遍历解决了bullets在remove元素时的ConcurrentModificationException异常
          */
-        for (BulletWithLifeStatus bullet : bullets) {
-            bullet.paint(graphics);
+        for (int index = 0; index < bullets.size(); index++) {
+            bullets.get(index).paint(graphics);
         }
+
         graphics.setFont(font);
         graphics.setColor(color);
     }
@@ -144,7 +144,7 @@ public class TankFrame12 extends Frame {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Frame frame = new TankFrame12();
+        Frame frame = new TankFrame13();
         while (true) {
             Thread.sleep(50);
             frame.repaint();
